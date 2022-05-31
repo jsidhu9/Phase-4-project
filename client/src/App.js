@@ -36,7 +36,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch('/authorized_user')
+    fetch('/me')
     .then((res) => {
       if (res.ok) {
         res.json()
