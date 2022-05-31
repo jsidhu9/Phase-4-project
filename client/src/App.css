@@ -36,3 +36,190 @@
     transform: rotate(360deg);
   }
 }
+
+.section{
+  padding: 8rem 0 7rem;
+  text-align: enter;
+}
+
+/* .about-heading,
+.section-description{
+  margin-bottom:1.2rem 0;
+} */
+
+/* .showcase-img{
+  position: relative;
+  max-width: 80%;
+  margin: 3rem auto 3rem
+} */
+
+
+#logo {
+  margin:-50px auto 0 auto;
+  padding:50px 0 0 0;
+  width:200px;
+  height:200px;
+  background:url(https://cdn.wallpapersafari.com/91/57/QbW6eO.png) no-repeat;
+}
+
+.mainhead {
+  background-image: url(https://cdn.wallpapersafari.com/91/57/QbW6eO.png);
+  height: 1000px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  color: white
+}
+
+
+/* .section{
+  padding: 8rem 0 7rem;
+  text-align: center;
+} */
+
+/* .section-heading,
+.section-description{
+  margin-bottom:1,2rem;
+}  */
+
+.dentist-img{
+    float: left;
+    width:  300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+body {margin:25px;}
+
+.polaroid {
+  width: 300px;
+  height: 100px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 5px; 
+}
+select {
+  font-size: 32px;
+}
+.home-img{
+  width:  400px;
+  height: 400px;
+
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
+  margin-bottom: 1em;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+nav {
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: cornsilk;
+}
+
+nav a {
+  display: inline-block;
+  margin: 1rem 2rem;
+  text-decoration: none;
+  font-size: 1.2em;
+  color: firebrick;
+  border-bottom: 2px solid firebrick;
+  transition: 0.1s;
+}
+
+nav a:hover,
+nav a:active {
+  color: tomato;
+  border-bottom: 2px solid tomato;
+}
+
+#home {
+  height: 50vh;
+  min-height: 400px;
+  background-color: cornsilk;
+}
+
+#home,
+#about,
+#projects {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 1rem;
+}
+
+#about img {
+  max-height: 50%;
+}
+
+#about a {
+  display: block;
+}
+
+#projects {
+  background-color: cornsilk;
+  min-height: 400px;
+}
+
+#project-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+}
+
+.project-item {
+  background-color: white;
+  padding: 2rem;
+  margin: 1rem;
+}
+
+.technologies span {
+  background-color: lightblue;
+  margin: 0.25rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+@media (min-width: 700px) {
+  #project-list {
+    flex-direction: row;
+  }
+
+  .project-item {
+    width: 50%;
+  }
+}
+
+.navigation{
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: cornsilk;
+
+}
