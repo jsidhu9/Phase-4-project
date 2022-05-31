@@ -22,6 +22,7 @@ function Login({setUser, setIsAuthenticated}) {
             body:JSON.stringify(user)
         })
         .then(res => {
+          console.log("HELLO")
             if(res.ok){
                 res.json()
                 .then(user=>{
@@ -33,9 +34,8 @@ function Login({setUser, setIsAuthenticated}) {
                 res.json()
                 .then(json => setError(json.error))
             }
-            })
-        
-    }
+        })  
+      }
     return (
 <div className="mainhead" >
   <div className="form" >

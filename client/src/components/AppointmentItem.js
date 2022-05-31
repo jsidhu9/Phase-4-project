@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import {useState} from "react"
 
 function AppointmentItem({appointment, onCancelAppointment, onUpdateAppointment}) {
-    const {date, time, duration, dentist_id, user_id, id, reason_for_visit} = appointment
+    const {date, time, duration, dentist_id, user_id, id} = appointment
     const [reasonForVisit, setReasonForVisit] = useState("")
 
 const handleReasonForVisit = (e) => {
@@ -45,7 +45,6 @@ const handleReasonForVisit = (e) => {
       <>
        <h1>{date}</h1>
        <h2>{time}</h2>
-       <h2>{reason_for_visit}</h2>
        <div className="remove-btn">
         <button onClick={() => handleCancelAppointment(appointment.id)}>Cancel Appointment</button>
       </div>
