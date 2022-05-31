@@ -1,51 +1,36 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: [:show, :update, :destroy]
-
-  # GET /appointments
+    
   def index
-    @appointments = Appointment.all
-
-    render json: @appointments
+      render json: Appointment.all
   end
 
-  # GET /appointments/1
   def show
-    render json: @appointment
+      appointment = Appointment.find_by(id: params[:id])
+      render json: appointment
   end
 
-  # POST /appointments
-  def create
-    @appointment = Appointment.new(appointment_params)
-
-    if @appointment.save
-      render json: @appointment, status: :created, location: @appointment
-    else
-      render json: @appointment.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /appointments/1
   def update
-    if @appointment.update(appointment_params)
-      render json: @appointment
-    else
-      render json: @appointment.errors, status: :unprocessable_entity
-    end
+      appointment = Appointment.find(params[:id])
+      if appointment
+          appointment.update!( appointment_params )
+          render json: appointment
+      else
+          render json: {error: "Appointment not found"}, status: :not_found
+      end
   end
 
-  # DELETE /appointments/1
+    
+  def create
+      appointment = Appointment.create!(appointment_params)
+      render json: appointment.activity, status: :created
+  end
   def destroy
-    @appointment.destroy
+      appointment = Appointment.find(params[:id])
+      appointment.destroy
+      head :no_content
   end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_appointment
-      @appointment = Appointment.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def appointment_params
-      params.fetch(:appointment, {})
-    end
+private
+  def appointment_params
+      params.permit(:date, :time, :duration, :user_id, :dentist_id, :reason_for_visit )
+  end
 end
