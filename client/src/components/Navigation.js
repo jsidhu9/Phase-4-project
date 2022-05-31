@@ -14,7 +14,7 @@ function Navigation({setIsAuthenticated, setUser, user}) {
     return (
          
         <div className="navigation">
-            <h1 className="u-pull-left">Nice and Gentle Dental</h1>
+            <h1 className="u-pull-left">Flatiron Dental</h1>
          <button className="u-pull-right" onClick={logout}>Logout</button>
          <div className="u-cf"></div>
          <h4>Welcome, {user.name}!</h4>

@@ -52,7 +52,7 @@ function DentistItem({dentist, user, handlePost}) {
                   </div>
                 </div>  
               </div>
-              <p className="four columns"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!</p>
+              <p className="four columns"> Ljsfdhajkshfkdsa</p>
 
               {/* <NewAppointmentForm dentist={dentist} user={user} handlePost={handlePost}/>  */}
               <form onSubmit={onSubmit} className="four columns">
