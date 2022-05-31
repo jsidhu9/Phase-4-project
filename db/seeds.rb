@@ -10,7 +10,7 @@ puts "🌱 Seeding spices..."
 puts "Deleting old data..."
 
 Appointment.destroy_all
-AppointmentSlot.destroy_all
+
 
 u1 = User.create(name: 'Jaz', password: "password")
 u2 = User.create(name: 'John', password: "password")

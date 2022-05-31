@@ -10,20 +10,22 @@ import Home from "./components/Home"
 import Appointments from "./components/Appointments"
 
 function App() {
-  const [dentists, setDentists] = useState([])
+  // const [dentists, setDentists] = useState([])
 
 
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
   const [appointments, setAppointments] = useState([])
 
-  function handleRenderDentists(data){
-    setDentists(data)
-  }
+  // function handleRenderDentists(data){
+  //   setDentists(data)
+  // }
+
   function onCancelAppointment(id) {
     const updatedAppointments = appointments.filter((appointment) => appointment.id !== id);
     setAppointments(updatedAppointments);
   }
+
   function handleUpdateAppointment(updatedAppointment) {
     const updatedAppointments = appointments.map((appointment) => {
       if (appointment.id === updatedAppointment.id) {
@@ -35,28 +37,36 @@ function App() {
     setAppointments(updatedAppointments);
   }
 
-  useEffect(() => {
-    fetch('/me')
-    .then((res) => {
-      if (res.ok) {
-        res.json()
-        .then((user) => {
-          setIsAuthenticated(true);
-          setUser(user);
-        });
+  // useEffect(() => {
+  //   fetch('/me')
+  //   .then((res) => {
+  //     if (res.ok) {
+  //       res.json()
+  //       .then((user) => {
+  //         setIsAuthenticated(true);
+  //         setUser(user);
+  //       });
       
+  //     }
+  //   });
+  
+  
+  //   fetch('/dentists')
+  //   .then(res => res.json())
+  //   // .then(handleRenderDentists);
+  //   .then(data => console.log(data))
+  // },[]);
+
+  useEffect(() => {
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
       }
     });
-  
-  
-    fetch('/dentists')
-    .then(res => res.json())
-    .then(handleRenderDentists);
-
-  },[]);
+  }, []);
 
   function handlePost(obj){
-    fetch('/appointments',{
+    fetch('/appointments', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body:JSON.stringify(obj)
@@ -67,17 +77,37 @@ function App() {
   if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
   return (
     <div>
-    <Navigation setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>
-    <Routes>
-    <Route exact path="/" element={<Home />} />
-    <Route path="/dentists" element={<Dentists dentists={dentists} user={user} handlePost={handlePost}/>} />
-    <Route path="/appointments" element={<Appointments user={user} onCancelAppointment={onCancelAppointment} onUpdateAppointment={handleUpdateAppointment}/>} />
-
-    
-    {/* <Route exact path="/signup" element={<Auth/>} />
-    <Route exact path="/login" element={<Login/>} /> */}
-     
-    </Routes>
+      <Navigation 
+          setIsAuthenticated={setIsAuthenticated} 
+          setUser={setUser} 
+          user={user}
+      />
+      <Routes>
+        <Route exact path="/">
+            <Home />
+        </Route>
+        <Route path="/dentists"/>
+          <Dentists 
+            // dentists={dentists} 
+            user={user} 
+            // handlePost={handlePost}
+          />
+        <Route/>
+        <Route path="/appointments">
+          <Appointments 
+              user={user} 
+              // onCancelAppointment={onCancelAppointment} 
+              // onUpdateAppointment={handleUpdateAppointment}
+          />
+        </Route>
+        <Route exact path="/signup">
+          <Auth />
+        </Route>
+        <Route exact path="/login">
+          <Login/>
+        </Route> 
+  
+      </Routes>
   </div>
   );
 }

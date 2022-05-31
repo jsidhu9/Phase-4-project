@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # resources :tests
   # resources :users
   # resources :patients
-  # resources :dentists
+  resources :dentists, only: [:index]
   # resources :appointments
   # resources :appointment_slots
 
