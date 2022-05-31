@@ -1,51 +1,45 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :authorize_user, except: [:create]
 
-  # GET /users
-  def index
-    @users = User.all
 
-    render json: @users
-  end
+  # GET "/users"
+  def index 
+      render json: User.all
+  end 
 
-  # GET /users/1
+  # GET "/users/:id"
   def show
-    render json: @user
-  end
+      current_user = User.find_by(id: session[:current_user])
+      render json: current_user
+  end 
 
-  # POST /users
+  # POST "/users"
   def create
-    @user = User.new(user_params)
+      user = User.create!(user_params)
+      session[:current_user] = user.id
 
-    if @user.save
-      render json: @user, status: :created, location: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
-  end
+      render json: user, status: :created
+  rescue ActiveRecord::RecordInvalid => invalid
+      render json: { errors: invalid.record.errors }, status: :unprocessable_entity
+  end 
 
-  # PATCH/PUT /users/1
+  # PUT "/users/:id"
   def update
-    if @user.update(user_params)
-      render json: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
+      user = User.find(params[:id])
+      user.update!(user_params)
+      render json: user, status: :created
   end
 
-  # DELETE /users/1
+  # DELETE "/users/:id"
   def destroy
-    @user.destroy
+      user = User.find(params[:id])
+      user.destroy
+      head :no_content
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  private 
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.fetch(:user, {})
-    end
+  def user_params
+      params.permit(:name, :password)
+  end 
 end
