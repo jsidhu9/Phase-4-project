@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :tests
   resources :users
   resources :patients
   resources :dentists
@@ -7,9 +8,10 @@ Rails.application.routes.draw do
   resources :appointment_slots
 
    # Initially Authenticate User
-   get '/authorized_user', to: 'users#show'
+   get '/me', to: 'users#me'
 
    # Login / Logout Routes
+   post '/signup', to: 'users#signup'
    post '/login', to: 'sessions#login'
    delete '/logout', to: 'sessions#logout'
    

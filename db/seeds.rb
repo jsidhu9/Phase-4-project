@@ -16,15 +16,13 @@ u1 = User.create(name: 'Jaz', password: "password")
 u2 = User.create(name: 'John', password: "password")
 u3 = User.create(name:'Alex', password: "password")
 
-#p1 = Patient.create(name: "Phil", password: "password")
+d1 = Dentist.create(name: 'Dr. Jazzy Jaz', specialty: 'Root canals')
+d2 = Dentist.create(name: 'Dr. John', specialty: 'Braces')
+d3 = Dentist.create(name: 'Dr. Alex', specialty: 'Cleaning')
 
-#d1 = Dentist.create(name: 'Dr. Jazzy Jaz', specialty: 'Root canals')
-#d2 = Dentist.create(name: 'Dr. John', specialty: 'Braces')
-#d3 = Dentist.create(name: 'Dr. Alex', specialty: 'Cleaning')
-
-a1 = Appointment.create(date: "Monday, June 1, 2022", time: '8:00am', duration: 60, patient_id: 7, dentist_id: 59)
-a2 = Appointment.create(date: "Monday, June 1, 2022", time: '9:00am', duration: 60, patient_id: 7, dentist_id: 59)
-a3 = Appointment.create(date: "Monday, June 1, 2022", time: '10:00am', duration: 60, patient_id: 7, dentist_id: 59)
-a4 = Appointment.create(date: "Monday, June 1, 2022", time: '11:00am', duration: 60, patient_id: 7, dentist_id: 59)
+a1 = Appointment.create(date: "Monday, June 1, 2022", time: '8:00am', duration: 60, user_id: u1.id, dentist_id: d1.id)
+a2 = Appointment.create(date: "Monday, June 1, 2022", time: '9:00am', duration: 60, user_id: u2.id, dentist_id: d2.id)
+a3 = Appointment.create(date: "Monday, June 1, 2022", time: '10:00am', duration: 60, user_id: u2.id, dentist_id: d2.id)
+a4 = Appointment.create(date: "Monday, June 1, 2022", time: '11:00am', duration: 60, user_id: u3.id, dentist_id: d3.id)
 
 puts "Seeding completed successfully 🌱"

@@ -4,7 +4,7 @@ class CreateAppointments < ActiveRecord::Migration[6.1]
       t.string :date
       t.string :time
       t.integer :duration
-      t.integer :patient_id
+      t.integer :user_id
       t.integer :dentist_id
       
       t.timestamps
