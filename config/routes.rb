@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :tests
   resources :users
   resources :patients
   resources :dentists
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
    get '/authorized_user', to: 'users#show'
 
    # Login / Logout Routes
+   post '/signup', to: 'users#signup'
    post '/login', to: 'sessions#login'
    delete '/logout', to: 'sessions#logout'
    

@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2022_05_31_035107) do
     t.string "date"
     t.string "time"
     t.integer "duration"
-    t.boolean "available"
+    t.boolean "avaliable"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2022_05_31_035107) do
     t.string "date"
     t.string "time"
     t.integer "duration"
-    t.integer "patient_id"
+    t.integer "user_id"
     t.integer "dentist_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -37,13 +37,6 @@ ActiveRecord::Schema.define(version: 2022_05_31_035107) do
   create_table "dentists", force: :cascade do |t|
     t.string "name"
     t.string "specialty"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "patients", force: :cascade do |t|
-    t.string "name"
-    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
