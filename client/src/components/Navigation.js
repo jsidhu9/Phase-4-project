@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Navigation({ setIsAuthenticated, setUser, user }) {
+const Navigation = ({ setIsAuthenticated, setUser, user }) => {
   const logout = () => {
     fetch("/logout", {
       method: "DELETE",
@@ -19,31 +19,11 @@ function Navigation({ setIsAuthenticated, setUser, user }) {
       <div className="u-cf"></div>
       <h4>Welcome, {user.name}!</h4>
       <nav>
-        <Link exact to="/"> Home</Link>
+        <Link exact to="/">Home</Link>
         <Link to="/appointments">Appointments</Link>
-        <Link to="/dentists">Dentists</Link>
+        {/* <Link to="/dentists">Dentists</Link> */}
       </nav>
     </div>
-
-    // <div className="navigation">
-    //     <h1 className="u-pull-left">Nice and Gentle Dental</h1>
-    //  <button className="u-pull-right" onClick={logout}>Logout</button>
-    //  <div className="u-cf"></div>
-    //  {/* <h4>Welcome, {user.name}!</h4> */}
-
-    //  <nav>
-    //    {/* <h3 className="one-third column"> */}
-    //        <Link to="/"> Home</Link>
-    //     {/* </h3>
-    //    <h3 className="one-third column"> */}
-    //        <Link to="/dentists">Dentists</Link>
-    //     {/* </h3>
-    //    <h3 className="one-third column"> */}
-    //        <Link to="/appointments"> Appointments</Link>
-    //     {/* </h3> */}
-
-    //  </nav>
-    // </div>
   );
 }
 

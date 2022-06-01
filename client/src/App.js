@@ -1,61 +1,47 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Routes, Route, Link, Router, Switch } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Auth from "./components/Auth";
 import Login from "./components/Login";
 import Navigation from "./components/Navigation";
 import Dentists from "./components/Dentists";
 import Home from "./components/Home";
+import Dentist from "./components/Dentist";
 import Appointments from "./components/Appointments";
+import { useNavigate } from "react-router-dom";
+
 
 function App() {
   const [dentists, setDentists] = useState([]);
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
-  const [appointments, setAppointments] = useState([]);
 
-  // function handleRenderDentists(data){
-  //   setDentists(data)
+  const [currentDentist, setCurrentDentist] = useState(null)
+
+  let navigate = useNavigate();
+
+    const [appointments, setAppointments] = useState([]);
+
+
+
+  // function onCancelAppointment(id) {
+  //   const updatedAppointments = appointments.filter(
+  //     (appointment) => appointment.id !== id
+  //   );
+  //   setAppointments(updatedAppointments);
   // }
 
-  function onCancelAppointment(id) {
-    const updatedAppointments = appointments.filter(
-      (appointment) => appointment.id !== id
-    );
-    setAppointments(updatedAppointments);
-  }
-
-  function handleUpdateAppointment(updatedAppointment) {
-    const updatedAppointments = appointments.map((appointment) => {
-      if (appointment.id === updatedAppointment.id) {
-        return updatedAppointment;
-      } else {
-        return appointment;
-      }
-    });
-    setAppointments(updatedAppointments);
-  }
-
-  // useEffect(() => {
-  //   fetch('/me')
-  //   .then((res) => {
-  //     if (res.ok) {
-  //       res.json()
-  //       .then((user) => {
-  //         setIsAuthenticated(true);
-  //         setUser(user);
-  //       });
-
+  // function handleUpdateAppointment(updatedAppointment) {
+  //   const updatedAppointments = appointments.map((appointment) => {
+  //     if (appointment.id === updatedAppointment.id) {
+  //       return updatedAppointment;
+  //     } else {
+  //       return appointment;
   //     }
   //   });
-
-  //   fetch('/dentists')
-  //   .then(res => res.json())
-  //   // .then(handleRenderDentists);
-  //   .then(data => console.log(data))
-  // },[]);
+  //   setAppointments(updatedAppointments);
+  // }
 
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -73,17 +59,15 @@ function App() {
     });
   }, []);
 
-  function handlePost(obj) {
-    fetch("/appointments", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(obj),
-    })
-      .then((res) => res.json())
+  const getDentistInfo = (dentist) => {
+    fetch(`/dentists/${dentist.id}`)
+      .then((r) => r.json())
       .then((data) => {
-        setAppointments([...appointments, data]);
-      });
-  }
+        setCurrentDentist(data)
+        navigate('/dentist')
+      })
+  };
+
 
   if (!isAuthenticated) {
     return (
@@ -96,49 +80,26 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       <Navigation
         setIsAuthenticated={setIsAuthenticated}
         setUser={setUser}
         user={user}
       />
       <Routes>
-        <Route exact path="/" element={<Home />} />
         <Route
-          path="/dentists"
-          element={
-            <Dentists dentists={dentists} user={user} handlePost={handlePost} />
-          }
+          exact
+          path="/"
+          element={<Home dentists={dentists} getDentistInfo={getDentistInfo} />}
         />
+        <Route
+          path="/dentist"
+          element={<Dentist currentDentist={currentDentist} />}
+        />
+        <Route path="/appointments" element={<Appointments appointments={user.appointments}/>} />
+        {/* <Route path="/new-appointment" element={<NewAppointmentForm appointments={appointments} user={user} dentists={dentists} />} /> */}
       </Routes>
-
-      {/* <Routes>
-        <Route exact path="/">
-            <Home />
-        </Route> */}
-      {/* <Route path="/dentists"/>
-          <Dentists 
-            // dentists={dentists} 
-            user={user} 
-            // handlePost={handlePost}
-          />
-        <Route/> */}
-      {/* <Route path="/appointments">
-          <Appointments 
-              user={user} 
-              // onCancelAppointment={onCancelAppointment} 
-              // onUpdateAppointment={handleUpdateAppointment}
-          />
-        </Route> */}
-      {/* <Route exact path="/signup">
-          <Auth />
-        </Route>
-        <Route exact path="/login">
-          <Login/>
-        </Route>  */}
-
-      {/* </Routes> */}
-    </div>
+    </>
   );
 }
 

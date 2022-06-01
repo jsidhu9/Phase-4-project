@@ -4,6 +4,7 @@ class CreateAppointments < ActiveRecord::Migration[6.1]
       t.string :date
       t.string :time
       t.integer :duration
+      t.string :appointment_type
       t.integer :user_id
       t.integer :dentist_id
       
