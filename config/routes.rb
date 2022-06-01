@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   # resources :users
-  resources :dentists, only: [:index]
+  resources :dentists, only: [:index, :show]
   resources :appointments, only: [:index]
 
    # Initially Authenticate User

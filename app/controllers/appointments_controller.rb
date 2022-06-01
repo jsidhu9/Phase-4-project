@@ -13,6 +13,6 @@ class AppointmentsController < ApplicationController
   private
 
     def appointment_params
-      params.permit(:date, :time, :duration, :user_id, :dentist_id)
+      params.permit(:date, :time, :duration, :user_id, :dentist_id, :appointment_type)
     end
 end

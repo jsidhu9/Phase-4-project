@@ -7,5 +7,10 @@ class DentistsController < ApplicationController
     render json: dentists
   end
 
+  def show
+    dentist = Dentist.find(params[:id])
+    render json: dentist
+  end 
+
  
 end

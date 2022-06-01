@@ -1,15 +1,22 @@
-// import { useEffect, useState } from "react";
-// import AppointmentItem from './AppointmentItem'
+import AppointmentItem from './AppointmentItem'
+// import NewAppointmentForm from './NewAppointmentForm'
 
 
-function Appointments({user, onCancelAppointment, onUpdateAppointment}) {
+const Appointments = ({ appointments }) => {
+
+  const appointmentList = appointments.map((appointment) => (
+    <AppointmentItem
+      key={appointment.id}
+      appointment={appointment}
+    />
+  ));
    
 
 
 return (
     <div className="container">
-      {/* <h2>{user.name}'s Appointments</h2>
-      <div> {user.appointments.map(appointment => <AppointmentItem key={appointment.id} appointment={appointment} onCancelAppointment={onCancelAppointment} onUpdateAppointment={onUpdateAppointment}/>)}</div> */}
+      <h2>My Appointments</h2>
+      <div>{appointmentList}</div>
     </div>
    );
 }
