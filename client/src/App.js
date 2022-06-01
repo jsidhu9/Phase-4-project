@@ -14,41 +14,25 @@ import { useNavigate } from "react-router-dom";
 function App() {
   const [dentists, setDentists] = useState([]);
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
 
   const [currentDentist, setCurrentDentist] = useState(null)
 
   let navigate = useNavigate();
 
-    const [appointments, setAppointments] = useState([]);
+  const [appointments, setAppointments] = useState([]);
 
-
-
-  // function onCancelAppointment(id) {
-  //   const updatedAppointments = appointments.filter(
-  //     (appointment) => appointment.id !== id
-  //   );
-  //   setAppointments(updatedAppointments);
+  // const fetchUser = () => {
+  //   console.log('plop')
   // }
 
-  // function handleUpdateAppointment(updatedAppointment) {
-  //   const updatedAppointments = appointments.map((appointment) => {
-  //     if (appointment.id === updatedAppointment.id) {
-  //       return updatedAppointment;
-  //     } else {
-  //       return appointment;
-  //     }
-  //   });
-  //   setAppointments(updatedAppointments);
-  // }
 
   useEffect(() => {
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
+      fetch("/me").then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUser(user));
+        }
+      });
   }, []);
 
   useEffect(() => {
@@ -69,11 +53,10 @@ function App() {
   };
 
 
-  if (!isAuthenticated) {
+  if (!user) {
     return (
       <Login
         error={"please login"}
-        setIsAuthenticated={setIsAuthenticated}
         setUser={setUser}
       />
     );
@@ -82,7 +65,6 @@ function App() {
   return (
     <>
       <Navigation
-        setIsAuthenticated={setIsAuthenticated}
         setUser={setUser}
         user={user}
       />

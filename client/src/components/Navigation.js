@@ -1,13 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navigation = ({ setIsAuthenticated, setUser, user }) => {
-  const logout = () => {
+  let navigate = useNavigate();
+    const logout = () => {
     fetch("/logout", {
       method: "DELETE",
     }).then(() => {
-      setIsAuthenticated(false);
       setUser(null);
     });
+    navigate('/')
   };
 
   return (

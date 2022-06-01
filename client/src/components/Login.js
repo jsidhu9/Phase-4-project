@@ -3,7 +3,7 @@ import Auth from "./Auth";
 // import { Button } from "../styles";
 
 
-const Login = ({ setUser, setIsAuthenticated }) => {
+const Login = ({ setUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,7 +24,6 @@ const Login = ({ setUser, setIsAuthenticated }) => {
       if (res.ok) {
         res.json().then((user) => {
           setUser(user);
-          setIsAuthenticated(true);
         });
       } else {
         res.json().then((json) => setError(json.error));

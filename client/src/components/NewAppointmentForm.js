@@ -9,6 +9,10 @@ const NewAppointmentForm = ( { currentDentist } ) => {
     const apptTimes = []
     // maybe an array of appointment times and dates? and we somehow to compare to what's in the DB?
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(e.target)
+    }
 
   return (
     <form>
@@ -26,7 +30,7 @@ const NewAppointmentForm = ( { currentDentist } ) => {
         <option>Select a duration!</option>
         
       </select>
-      <button>Submit</button>
+      <button onSubmit={handleSubmit}>Submit</button>
     </form>
   );
 };
