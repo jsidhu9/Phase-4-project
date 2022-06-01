@@ -1,8 +1,19 @@
+import { useState, useEffect } from 'react'
 import AppointmentItem from './AppointmentItem'
 // import NewAppointmentForm from './NewAppointmentForm'
 
 
-const Appointments = ({ appointments }) => {
+const Appointments = ({ user }) => {
+  const [appointments, setAppointments] = useState([])
+
+  useEffect(() => {
+    fetch("/myappointments").then((r) => {
+      if (r.ok) {
+        r.json().then((appts) => setAppointments(appts));
+      }
+    });
+  }, []);
+  console.log(appointments)
 
   const appointmentList = appointments.map((appointment) => (
     <AppointmentItem

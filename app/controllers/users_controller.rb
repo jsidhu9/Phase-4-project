@@ -15,7 +15,12 @@ class UsersController < ApplicationController
     else
       render_unauthorized
     end
-end 
+  end 
+
+  def my_appointments
+    user = User.find_by(id: session[:user_id])
+    render json: user.appointments
+  end 
 
  
 
