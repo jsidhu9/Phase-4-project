@@ -1,35 +1,46 @@
 import react, {useState} from "react";
 import DateTimePicker from "react-datetime-picker";
 
-const NewAppointmentForm = ({ currentDentist }) => {
+const NewAppointmentForm = ({ currentDentist, user }) => {
   const [value, onChange] = useState(new Date());
+
   const [formData, setFormData] = useState({
-      dentist_id: "",
-      specialty: "",
-      time: "",
-      date: "",
-      duration: ""
+      dentist_id: currentDentist.id,
+      user_id: user.id
   })
-
-  // here we need something to have dates and times. i'm not totally sure how to do that
-
-//   const apptTimes = ["9am", "10am", "11am", "1pm", "2pm", "3pm", "4pm"]
-//   const apptDates = ["June 3, 2022", "June 4, 2022", "June 5, 2022", "June 6, 2022", "June 7, 2022", "June 8, 2022", "June 9, 2022"]
-  // maybe an array of appointment times and dates? and we somehow to compare to what's in the DB?
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
-    // const newAppt = {
-    //     dentist_id: currentDentist.id,
-    //     time: formData.time,
-    //     date: formData.date
-    // }
+    console.log(value);
+    console.log(user.id)
+    console.log(currentDentist.id)
+
+    const newAppointment = {
+        user_id: user.id,
+        dentist_id: currentDentist.id,
+        appointment_date_time: value
+    }
+
+    fetch("/appointments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newAppointment),
+      }).then((res) => {
+        if (res.ok) {
+          res.json().then((user) => {
+            console.log('success')
+          });
+        } else {
+          res.json().then((json) => console.log('wrong'));
+        }
+      });
   };
+
 
   return (
     <div>
       <DateTimePicker onChange={onChange} value={value} />
+      <button onClick={handleSubmit}>Book</button>
     </div>
     // <form>
     //   <select name={console.log('name')} value={console.log('value')}>

@@ -10,9 +10,14 @@ class AppointmentsController < ApplicationController
     render json: appointments
   end
 
+  def create
+    appointment = Appointment.create!(appointment_params)
+    render json: appointment, status: 201
+  end
+
   private
 
     def appointment_params
-      params.permit(:date, :time, :duration, :user_id, :dentist_id, :appointment_type)
+      params.permit( :user_id, :dentist_id, :appointment_date_time)
     end
 end

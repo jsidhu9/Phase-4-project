@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   
   # resources :users
   resources :dentists, only: [:index, :show]
-  resources :appointments, only: [:index]
+  resources :appointments, only: [:index, :create]
 
    # Initially Authenticate User
    get '/me', to: 'users#me'
+   get 'myappointments', to: 'users#my_appointments'
 
    # Login / Logout Routes
    post '/signup', to: 'users#signup'

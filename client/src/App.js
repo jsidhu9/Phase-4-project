@@ -77,7 +77,7 @@ const App = () => {
         />
         <Route
           path="/dentist"
-          element={<Dentist currentDentist={currentDentist} />}
+          element={<Dentist currentDentist={currentDentist} user={user}/>}
         />
         <Route path="/appointments" element={<Appointments appointments={user.appointments}/>} />
         {/* <Route path="/new-appointment" element={<NewAppointmentForm appointments={appointments} user={user} dentists={dentists} />} /> */}

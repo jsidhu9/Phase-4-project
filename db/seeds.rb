@@ -20,9 +20,9 @@ d1 = Dentist.create(name: 'Dr. Jazzy Jaz', specialty: 'Root canals')
 d2 = Dentist.create(name: 'Dr. John', specialty: 'Braces')
 d3 = Dentist.create(name: 'Dr. Alex', specialty: 'Cleaning')
 
-a1 = Appointment.create(date: "Monday, June 1, 2022", time: '8:00am', appointment_type: "Cleaning", duration: 60, user_id: u1.id, dentist_id: d1.id)
-a2 = Appointment.create(date: "Monday, June 1, 2022", time: '9:00am', appointment_type: "Braces Check", duration: 60, user_id: u2.id, dentist_id: d2.id)
-a3 = Appointment.create(date: "Monday, June 1, 2022", time: '10:00am', appointment_type: "Cleaning", duration: 60, user_id: u2.id, dentist_id: d2.id)
-a4 = Appointment.create(date: "Monday, June 1, 2022", time: '11:00am', appointment_type: "Filling", duration: 60, user_id: u3.id, dentist_id: d3.id)
+# a1 = Appointment.create(appointment_date_time: "2022-06-01T23:12:12.510Z", user_id: u1.id, dentist_id: d1.id)
+# a2 = Appointment.create(date: "Monday, June 1, 2022", time: '9:00am', appointment_type: "Braces Check", duration: 60, user_id: u2.id, dentist_id: d2.id)
+# a3 = Appointment.create(date: "Monday, June 1, 2022", time: '10:00am', appointment_type: "Cleaning", duration: 60, user_id: u2.id, dentist_id: d2.id)
+# a4 = Appointment.create(date: "Monday, June 1, 2022", time: '11:00am', appointment_type: "Filling", duration: 60, user_id: u3.id, dentist_id: d3.id)
 
 puts "Seeding completed successfully 🌱"
