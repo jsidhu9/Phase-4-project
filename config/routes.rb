@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
   
-  # resources :tests
   # resources :users
-  # resources :patients
   resources :dentists, only: [:index]
-  # resources :appointments
-  # resources :appointment_slots
+  resources :appointments, only: [:index]
 
    # Initially Authenticate User
    get '/me', to: 'users#me'
