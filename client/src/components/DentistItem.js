@@ -41,7 +41,6 @@
 //   } 
 //     return (
       
-      
 //           <div>
 //             <div className="row">
 //               <div className="four columns">
