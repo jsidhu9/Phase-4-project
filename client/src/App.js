@@ -11,7 +11,8 @@ import Appointments from "./components/Appointments";
 import { useNavigate } from "react-router-dom";
 
 
-function App() {
+
+const App = () => {
   const [dentists, setDentists] = useState([]);
 
   const [user, setUser] = useState(null);
