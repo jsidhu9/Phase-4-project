@@ -3,9 +3,8 @@ class DentistsController < ApplicationController
 
   # GET /dentists
   def index
-    @dentists = Dentist.all
-
-    render json: @dentists
+    dentists = Dentist.all
+    render json: dentists
   end
 
   # # GET /dentists/1

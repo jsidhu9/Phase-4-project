@@ -16,9 +16,9 @@ u1 = User.create(name: 'Jaz', password: "password")
 u2 = User.create(name: 'John', password: "password")
 u3 = User.create(name:'Alex', password: "password")
 
-d1 = Dentist.create(name: 'Dr. Jazzy Jaz', specialty: 'Root canals')
-d2 = Dentist.create(name: 'Dr. John', specialty: 'Braces')
-d3 = Dentist.create(name: 'Dr. Alex', specialty: 'Cleaning')
+d1 = Dentist.create(name: 'Dr. Jazzy Jaz', specialty: 'Root canals', photo: "photo here")
+d2 = Dentist.create(name: 'Dr. John', specialty: 'Braces', photo: "photo here")
+d3 = Dentist.create(name: 'Dr. Alex', specialty: 'Cleaning', photo: "https://img.freepik.com/free-vector/dentist-polishes-teeth-using-dental-floss_1308-101555.jpg?w=2000")
 
 a1 = Appointment.create(date: "Monday, June 1, 2022", time: '8:00am', duration: 60, user_id: u1.id, dentist_id: d1.id)
 a2 = Appointment.create(date: "Monday, June 1, 2022", time: '9:00am', duration: 60, user_id: u2.id, dentist_id: d2.id)

@@ -10,7 +10,7 @@ import Home from "./components/Home";
 import Appointments from "./components/Appointments";
 
 function App() {
-  // const [dentists, setDentists] = useState([])
+  const [dentists, setDentists] = useState([]);
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
@@ -65,6 +65,14 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    fetch("/dentists").then((r) => {
+      if (r.ok) {
+        r.json().then((dentists) => setDentists(dentists));
+      }
+    });
+  }, []);
+
   function handlePost(obj) {
     fetch("/appointments", {
       method: "POST",
@@ -88,12 +96,6 @@ function App() {
   }
 
   return (
-    // <Navigation
-    //        setIsAuthenticated={setIsAuthenticated}
-    //        setUser={setUser}
-    //        user={user}
-    //       />
-
     <div>
       <Navigation
         setIsAuthenticated={setIsAuthenticated}
@@ -102,6 +104,12 @@ function App() {
       />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route
+          path="/dentists"
+          element={
+            <Dentists dentists={dentists} user={user} handlePost={handlePost} />
+          }
+        />
       </Routes>
 
       {/* <Routes>
