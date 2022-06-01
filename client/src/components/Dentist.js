@@ -8,10 +8,9 @@ const Dentist = ({ currentDentist }) => {
 
   return (
     <>
-      <p>{currentDentist.name}</p>
-      <p>{currentDentist.specialty}</p>
-      <h3>form will go in here!</h3>
-      {/* <NewAppointmentForm currentDentist={currentDentist}/> */}
+      {/* <p>Book an appointment with {currentDentist.name}!</p> */}
+      {/* <p>Speciality: {currentDentist.specialty}</p> */}
+      <NewAppointmentForm currentDentist={currentDentist}/>
     </>
   );
 };
