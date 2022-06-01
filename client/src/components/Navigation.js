@@ -1,8 +1,6 @@
-import { Link, Routes, Route, NavLink } from "react-router-dom";
-import Home from "./Home";
+import { Link } from "react-router-dom";
 
 function Navigation({ setIsAuthenticated, setUser, user }) {
-  // console.log(user)
   const logout = () => {
     fetch("/logout", {
       method: "DELETE",
@@ -14,17 +12,16 @@ function Navigation({ setIsAuthenticated, setUser, user }) {
 
   return (
     <div className="navigation">
-      <h1 className="u-pull-left">Nice and Gentle Dental</h1>
+      <h1 className="u-pull-left">Flatiron Dental</h1>
       <button className="u-pull-right" onClick={logout}>
         Logout
       </button>
       <div className="u-cf"></div>
-
       <h4>Welcome, {user.name}!</h4>
       <nav>
-      <Link to="/"> Home</Link>
-      <Link to="/appointments">Appointments</Link>
-      <Link to="/dentists">Dentists</Link>
+        <Link exact to="/"> Home</Link>
+        <Link to="/appointments">Appointments</Link>
+        <Link to="/dentists">Dentists</Link>
       </nav>
     </div>
 

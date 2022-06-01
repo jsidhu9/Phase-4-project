@@ -11,7 +11,7 @@ Rails.application.routes.draw do
    get '/me', to: 'users#me'
 
    # Login / Logout Routes
-   post '/users', to: 'users#signup'
+   post '/signup', to: 'users#signup'
    post '/login', to: 'sessions#login'
    delete '/logout', to: 'sessions#logout'
    
