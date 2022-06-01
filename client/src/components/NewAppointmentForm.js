@@ -1,40 +1,30 @@
 import react from "react";
 
-const NewAppointmentForm = ( { dentists, appointments } ) => {
+const NewAppointmentForm = ( { currentDentist } ) => {
     const startHour = 9
     const endHour = 16
 
-
+    // here we need something to have dates and times. i'm not totally sure how to do that 
 
     const apptTimes = []
+    // maybe an array of appointment times and dates? and we somehow to compare to what's in the DB?
 
 
   return (
     <form>
-        <h3>Make a new appointment!</h3>
+        <h2>Make a new appointment with {currentDentist.name}!</h2>
+        <h3>{currentDentist.name}'s Specialty: {currentDentist.specialty}</h3>
       <select name={console.log('name')} value={console.log('value')}>
-        <option>Select your dentist!</option>
-        {dentists.map((dentist) => {
-          return (
-            <>
-              <option value={dentist.id} key={dentist.id}>
-                {dentist.name}
-              </option>
-            </>
-          );
-        })}
+        <option>Select a date!</option>
+    
       </select>
       <select name={console.log('name')} value={console.log('value')}>
         <option>Select a time!</option>
-        {appointments.map((appt) => {
-          return (
-            <>
-              <option value={appt.id} key={appt.id}>
-                {appt.time}
-              </option>
-            </>
-          );
-        })}
+        
+      </select>
+      <select name={console.log('name')} value={console.log('value')}>
+        <option>Select a duration!</option>
+        
       </select>
       <button>Submit</button>
     </form>
