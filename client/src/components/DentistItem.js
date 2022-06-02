@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import { useNavigate } from "react-router-dom";
 
 
-const DentistItem = ({ dentist, getDentistInfo }) => {
+const DentistItem = ({ dentist }) => {
   
   let navigate = useNavigate();
   

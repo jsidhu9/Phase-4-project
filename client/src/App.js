@@ -17,14 +17,7 @@ const App = () => {
 
   const [user, setUser] = useState(null);
 
-  // const [currentDentist, setCurrentDentist] = useState(null)
-
-  const [isEdit, setIsEdit] = useState(false)
-
   let navigate = useNavigate();
-  
-  
-
 
 
 
@@ -44,23 +37,6 @@ const App = () => {
     });
   }, []);
 
-  // const getDentistInfo = (dentist) => {
-  //   // fetch(`/dentists/${dentist.id}`)
-  //   //   .then((r) => r.json())
-  //   //   .then((data) => {
-  //   //     setCurrentDentist(data)
-  //   //     navigate('/dentist')
-  //   //   })
-  //   setCurrentDentist(dentist)
-  //   navigate(`/dentist/${dentist.id}`)
-  // };
-
-  const editApptMode = () => {
-    if(!isEdit)
-    setIsEdit(true)
-}
-
-console.log(isEdit)
 
   if (!user) {
     return (
@@ -85,9 +61,9 @@ console.log(isEdit)
         />
         <Route
           path='/dentists/:id'
-          element={<Dentist user={user} isEdit={isEdit} setIsEdit={setIsEdit}/>}
+          element={<Dentist user={user} />}
         />
-        <Route path="/appointments" element={<Appointments appointments={user.appointments} editApptMode={editApptMode}/>} />
+        <Route path="/appointments" element={<Appointments appointments={user.appointments} />} />
         <Route path="edit-appointment/:id" element={<EditAppointment />} />
       </Routes>
     </>

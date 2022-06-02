@@ -6,11 +6,13 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const Dentist = ({ user, isEdit }) => {
   const [currentDentist, setCurrentDentist] = useState(null);
   const dentist = useParams();
+  let navigate = useNavigate();
+
 
   useEffect(() => {
     fetch(`/dentists/${dentist.id}`).then((r) => {
@@ -18,7 +20,7 @@ const Dentist = ({ user, isEdit }) => {
         r.json().then((d) => setCurrentDentist(d));
       }
     });
-  }, []);
+  }, [dentist.id]);
 
   const createAppointment = (value) => {
     const newAppointment = {
@@ -35,6 +37,7 @@ const Dentist = ({ user, isEdit }) => {
       if (res.ok) {
         res.json().then((user) => {
           console.log("success");
+          navigate('/appointments')
         });
       } else {
         res.json().then((json) => console.log("wrong"));
