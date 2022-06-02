@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import Auth from "./Auth";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 // import { Button } from "../styles";
 
 const Login = ({ setUser }) => {
@@ -30,10 +35,16 @@ const Login = ({ setUser }) => {
     });
   }
   return (
-    <div className="mainhead">
-      <h1>Flatiron Dental</h1>
+    <div>
+      
+      <h1 className="mainhead">Flatiron Dental</h1>
+      <div className="form">
+      <Card className='login_card'>
+
       <h3>Returning Patient?</h3>
+      <br/>
       <h4>Login below!</h4>
+      <br/>
       <form onSubmit={onSubmit}>
         <div>
           <label>Username</label>
@@ -55,8 +66,14 @@ const Login = ({ setUser }) => {
         </div>
         <input type="submit" value="Log in" />
       </form>
+       </Card>
+       {/* <Card className='login_card'>
+
       {error ? <div>{error}</div> : null}
       <Auth setUser={setUser} setIsAuthenticated={setUser} />
+      </Card>. */}
+    </div>
+   
     </div>
   );
 };

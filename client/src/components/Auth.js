@@ -23,7 +23,6 @@ const Auth = ({ setUser, setIsAuthenticated }) => {
         res.json().then((user) => {
           setIsLoading(false);
           setUser(user);
-          setIsAuthenticated(true);
         });
       } else {
         res.json().then((json) => setErrors(json.errors));
@@ -31,7 +30,7 @@ const Auth = ({ setUser, setIsAuthenticated }) => {
     });
   }
   return (
-    <div className="form">
+    <div>
       <h1>First time? Welcome!</h1>
       <h3>Create account below!</h3>
       <form onSubmit={onSubmit}>

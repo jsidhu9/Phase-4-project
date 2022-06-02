@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import AppointmentItem from "./AppointmentItem";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+// import NewAppointmentForm from './NewAppointmentForm'
 
 const Appointments = ({ user, editApptMode }) => {
   const [appointments, setAppointments] = useState([]);
@@ -22,10 +25,16 @@ const Appointments = ({ user, editApptMode }) => {
   ));
 
   return (
-    <div className="container">
+    <Card sx={{minHeight: 500, border: '1px solid',  borderColor: 'primary.main', borderRadius: '16px'}}>
+    <CardContent>
+    <div className="header-container" >
       <h2>My Appointments</h2>
-      <div>{appointmentList}</div>
-    </div>
+      </div>
+      <div id="make-appointment">
+      {appointmentList}
+      </div>
+      </CardContent>
+    </Card>
   );
 };
 export default Appointments;

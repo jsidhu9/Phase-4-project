@@ -7,10 +7,9 @@ import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import Dentist from "./components/Dentist";
 import Appointments from "./components/Appointments";
+import Auth from "./components/Auth"
 import EditAppointment from './components/EditAppointment'
 import { useNavigate, useParams } from "react-router-dom";
-
-
 
 const App = () => {
   const [dentists, setDentists] = useState([]);
@@ -18,8 +17,6 @@ const App = () => {
   const [user, setUser] = useState(null);
 
   let navigate = useNavigate();
-
-
 
   useEffect(() => {
       fetch("/me").then((r) => {
@@ -40,10 +37,13 @@ const App = () => {
 
   if (!user) {
     return (
+      <>
       <Login
         error={"please login"}
         setUser={setUser}
       />
+      <Auth setUser={setUser} />
+      </>
     );
   }
 

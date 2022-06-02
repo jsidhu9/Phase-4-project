@@ -28,12 +28,14 @@ const DentistItem = ({ dentist }) => {
       <Typography variant="h5" component="div">
       </Typography>
       <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        {dentist.specialty}
+       Dentist Specialty:
+       <br/>
+      {dentist.specialty}
     
       </Typography>
     </CardContent>
     <CardActions>
-      <Button size="small" onClick={handleClick} >View Info</Button>
+      <Button size="small" onClick={handleClick} >Schedule Appointment</Button>
     </CardActions>
   </Card>
   </div>
