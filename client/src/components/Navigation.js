@@ -46,7 +46,6 @@ const Navigation = ({ setIsAuthenticated, setUser, user }) => {
         <LinkContainer to="/appointments">
         <Tab label="Appointments"/>
         </LinkContainer>
-        {/* <Link to="/dentists">Dentists</Link> */}
       </Tabs>
       </Box>
     </div>

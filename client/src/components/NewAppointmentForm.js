@@ -41,22 +41,6 @@ const NewAppointmentForm = ({ currentDentist, user }) => {
       <DateTimePicker onChange={onChange} value={value} />
       <button onClick={handleSubmit}>Book</button>
     </div>
-    // <form>
-    //   <select name={console.log('name')} value={console.log('value')}>
-    //     <option>Select a date!</option>
-    //     <option>{apptDates.map(date => date)}</option>
-
-    //   </select>
-    //   <select name={console.log('name')} value={console.log('value')}>
-    //     <option>Select a time!</option>
-
-    //   </select>
-    //   <select name={console.log('name')} value={console.log('value')}>
-    //     <option>Select a duration!</option>
-    //     <option>60 minutes</option>
-    //   </select>
-    //   <button onSubmit={handleSubmit}>Submit</button>
-    // </form>
   );
 };
 
