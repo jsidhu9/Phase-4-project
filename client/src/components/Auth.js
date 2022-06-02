@@ -6,7 +6,6 @@ const Auth = ({ setUser, setIsAuthenticated }) => {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-
   function onSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
@@ -36,28 +35,32 @@ const Auth = ({ setUser, setIsAuthenticated }) => {
       <h1>First time? Welcome!</h1>
       <h3>Create account below!</h3>
       <form onSubmit={onSubmit}>
-          <div>
-            <label>Username</label>
-            <input
-              type="text"
-              placeholder="Enter new username..."
-              id="exampleEmailInput"
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Password</label>
-            <input
-              type="password"
-              placeholder="Enter new password..."
-              id="exampleEmailInput"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-        <input className="button-primary" type="submit" value={isLoading ? "Loading..." : "Sign Up"}/>
+        <div>
+          <label>Username</label>
+          <input
+            type="text"
+            placeholder="Enter new username..."
+            id="exampleEmailInput"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Password</label>
+          <input
+            type="password"
+            placeholder="Enter new password..."
+            id="exampleEmailInput"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <input
+          className="button-primary"
+          type="submit"
+          value={isLoading ? "Loading..." : "Sign Up"}
+        />
       </form>
     </div>
   );
-}
+};
 
 export default Auth;

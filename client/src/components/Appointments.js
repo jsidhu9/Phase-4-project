@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react'
-import AppointmentItem from './AppointmentItem'
+import { useState, useEffect } from "react";
+import AppointmentItem from "./AppointmentItem";
 // import NewAppointmentForm from './NewAppointmentForm'
 
-
 const Appointments = ({ user }) => {
-  const [appointments, setAppointments] = useState([])
+  const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
     fetch("/myappointments").then((r) => {
@@ -13,22 +12,17 @@ const Appointments = ({ user }) => {
       }
     });
   }, []);
-  console.log(appointments)
+  console.log(appointments);
 
   const appointmentList = appointments.map((appointment) => (
-    <AppointmentItem
-      key={appointment.id}
-      appointment={appointment}
-    />
+    <AppointmentItem key={appointment.id} appointment={appointment} />
   ));
-   
 
-
-return (
+  return (
     <div className="container">
       <h2>My Appointments</h2>
       <div>{appointmentList}</div>
     </div>
-   );
-}
+  );
+};
 export default Appointments;
