@@ -160,16 +160,6 @@ nav a:active {
   background-color: cornsilk;
 }
 
-#home,
-#about,
-#projects {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  padding: 1rem;
-}
 
 #about img {
   max-height: 50%;
@@ -184,13 +174,6 @@ nav a:active {
   min-height: 400px;
 }
 
-#project-list {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  max-width: 800px;
-}
 
 .project-item {
   background-color: white;
@@ -217,9 +200,20 @@ nav a:active {
 }
 
 .navigation{
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: cornsilk;
+  
+  background-color: rgba(17, 170, 216, 0.771);
 
+}
+
+.dentist_card{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+
+.dentist_container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
