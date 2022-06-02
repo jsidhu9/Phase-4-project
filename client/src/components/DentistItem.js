@@ -7,10 +7,15 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from "react-router-dom";
 
-const DentistItem = ({ dentist, getDentistInfo }) => {
+
+const DentistItem = ({ dentist }) => {
+  
+  let navigate = useNavigate();
+  
   const handleClick = () => {
-    getDentistInfo(dentist);
+    navigate(`dentists/${dentist.id}`);
   };
 
   return (
@@ -34,11 +39,6 @@ const DentistItem = ({ dentist, getDentistInfo }) => {
     </CardActions>
   </Card>
   </div>
-    // <>
-    //   <p>{dentist.name}</p>
-    //   <p>{dentist.speciality}</p>
-    //   <button onClick={handleClick}>View Info</button>
-    // </>
   );
 };
 

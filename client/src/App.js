@@ -4,29 +4,19 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
 import Navigation from "./components/Navigation";
-import Dentists from "./components/Dentists";
 import Home from "./components/Home";
 import Dentist from "./components/Dentist";
 import Appointments from "./components/Appointments";
-import { useNavigate } from "react-router-dom";
 import Auth from "./components/Auth"
-
+import EditAppointment from './components/EditAppointment'
+import { useNavigate, useParams } from "react-router-dom";
 
 const App = () => {
   const [dentists, setDentists] = useState([]);
 
   const [user, setUser] = useState(null);
 
-  const [currentDentist, setCurrentDentist] = useState(null)
-
   let navigate = useNavigate();
-
-  const [appointments, setAppointments] = useState([]);
-
-  // const fetchUser = () => {
-  //   console.log('plop')
-  // }
-
 
   useEffect(() => {
       fetch("/me").then((r) => {
@@ -43,15 +33,6 @@ const App = () => {
       }
     });
   }, []);
-
-  const getDentistInfo = (dentist) => {
-    fetch(`/dentists/${dentist.id}`)
-      .then((r) => r.json())
-      .then((data) => {
-        setCurrentDentist(data)
-        navigate('/dentist')
-      })
-  };
 
 
   if (!user) {
@@ -76,14 +57,14 @@ const App = () => {
         <Route
           exact
           path="/"
-          element={<Home dentists={dentists} getDentistInfo={getDentistInfo} />}
+          element={<Home dentists={dentists} />}
         />
         <Route
-          path="/dentist"
-          element={<Dentist currentDentist={currentDentist} user={user}/>}
+          path='/dentists/:id'
+          element={<Dentist user={user} />}
         />
-        <Route path="/appointments" element={<Appointments appointments={user.appointments}/>} />
-        {/* <Route path="/new-appointment" element={<NewAppointmentForm appointments={appointments} user={user} dentists={dentists} />} /> */}
+        <Route path="/appointments" element={<Appointments appointments={user.appointments} />} />
+        <Route path="edit-appointment/:id" element={<EditAppointment />} />
       </Routes>
     </>
   );

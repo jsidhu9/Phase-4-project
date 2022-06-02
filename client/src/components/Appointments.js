@@ -4,7 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 // import NewAppointmentForm from './NewAppointmentForm'
 
-const Appointments = ({ user }) => {
+const Appointments = ({ user, editApptMode }) => {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
@@ -14,10 +14,14 @@ const Appointments = ({ user }) => {
       }
     });
   }, []);
-  console.log(appointments);
+
+  const cancelAppt = (appointment) => {
+    const oneLess = appointments.filter((appt) => appointment.id !== appt.id)
+    setAppointments(oneLess)
+  }
 
   const appointmentList = appointments.map((appointment) => (
-    <AppointmentItem key={appointment.id} appointment={appointment} />
+    <AppointmentItem key={appointment.id} appointment={appointment} setAppointments={setAppointments} cancelAppt={cancelAppt} editApptMode={editApptMode} />
   ));
 
   return (

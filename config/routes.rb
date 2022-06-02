@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   # resources :users
   resources :dentists, only: [:index, :show]
-  resources :appointments, only: [:index, :create]
+  resources :appointments, only: [:index, :create, :update, :destroy, :show]
 
    # Initially Authenticate User
    get '/me', to: 'users#me'

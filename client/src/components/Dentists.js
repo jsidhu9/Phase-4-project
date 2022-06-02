@@ -1,13 +1,12 @@
 import DentistItem from "./DentistItem";
 import Card from '@mui/material/Card';
 
-const Dentists = ({ dentists, user, getDentistInfo }) => {
+const Dentists = ({ dentists, user }) => {
   const dentistItems = dentists.map((dentist) => (
     <DentistItem
       key={dentist.id}
       dentist={dentist}
       user={user}
-      getDentistInfo={getDentistInfo}
     />
   ));
 
