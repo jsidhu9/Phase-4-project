@@ -1,5 +1,7 @@
 import react, { useState } from "react";
 import DateTimePicker from "react-datetime-picker";
+import Button from '@mui/material/Button';
+
 
 const NewAppointmentForm = ({ currentDentist, user }) => {
   const [value, onChange] = useState(new Date());
@@ -37,9 +39,9 @@ const NewAppointmentForm = ({ currentDentist, user }) => {
   };
 
   return (
-    <div>
-      <DateTimePicker onChange={onChange} value={value} />
-      <button onClick={handleSubmit}>Book</button>
+    <div className="appointment-container">
+      <DateTimePicker  onChange={onChange} value={value} />
+      <Button size="small" onClick={handleSubmit} >Schedule Appointment</Button>
     </div>
     // <form>
     //   <select name={console.log('name')} value={console.log('value')}>

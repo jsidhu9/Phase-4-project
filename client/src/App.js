@@ -9,7 +9,7 @@ import Home from "./components/Home";
 import Dentist from "./components/Dentist";
 import Appointments from "./components/Appointments";
 import { useNavigate } from "react-router-dom";
-
+import Auth from "./components/Auth"
 
 
 const App = () => {
@@ -56,10 +56,13 @@ const App = () => {
 
   if (!user) {
     return (
+      <>
       <Login
         error={"please login"}
         setUser={setUser}
       />
+      <Auth setUser={setUser} />
+      </>
     );
   }
 
