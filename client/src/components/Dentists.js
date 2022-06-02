@@ -16,6 +16,6 @@ const Dentists = ({ dentists, user, getDentistInfo }) => {
       <div>{dentistItems}</div>
     </div>
   );
-}
+};
 
 export default Dentists;

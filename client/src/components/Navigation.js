@@ -7,13 +7,13 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 const Navigation = ({ setIsAuthenticated, setUser, user }) => {
   let navigate = useNavigate();
-    const logout = () => {
+  const logout = () => {
     fetch("/logout", {
       method: "DELETE",
     }).then(() => {
       setUser(null);
     });
-    navigate('/')
+    navigate("/");
   };
 
   const [value, setValue] = React.useState(0);
@@ -30,6 +30,7 @@ const Navigation = ({ setIsAuthenticated, setUser, user }) => {
       </button>
       <div className="u-cf"></div>
       <h4>Welcome, {user.name}!</h4>
+
       <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
       <Tabs
        value={value} 
@@ -50,6 +51,6 @@ const Navigation = ({ setIsAuthenticated, setUser, user }) => {
       </Box>
     </div>
   );
-}
+};
 
 export default Navigation;
