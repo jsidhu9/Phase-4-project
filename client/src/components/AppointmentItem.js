@@ -17,7 +17,7 @@ const AppointmentItem = ({ appointment, cancelAppt, editApptMode }) => {
 
   const handleEdit = (e) => {
     editApptMode();
-    navigate('/dentist')
+    navigate(`/edit-appointment/${id}`)
   }
 
   return (

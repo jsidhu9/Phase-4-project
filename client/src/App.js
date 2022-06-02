@@ -4,11 +4,11 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
 import Navigation from "./components/Navigation";
-import Dentists from "./components/Dentists";
 import Home from "./components/Home";
 import Dentist from "./components/Dentist";
 import Appointments from "./components/Appointments";
-import { useNavigate } from "react-router-dom";
+import EditAppointment from './components/EditAppointment'
+import { useNavigate, useParams } from "react-router-dom";
 
 
 
@@ -17,11 +17,15 @@ const App = () => {
 
   const [user, setUser] = useState(null);
 
-  const [currentDentist, setCurrentDentist] = useState(null)
+  // const [currentDentist, setCurrentDentist] = useState(null)
 
   const [isEdit, setIsEdit] = useState(false)
 
   let navigate = useNavigate();
+  
+  
+
+
 
 
   useEffect(() => {
@@ -40,16 +44,19 @@ const App = () => {
     });
   }, []);
 
-  const getDentistInfo = (dentist) => {
-    fetch(`/dentists/${dentist.id}`)
-      .then((r) => r.json())
-      .then((data) => {
-        setCurrentDentist(data)
-        navigate('/dentist')
-      })
-  };
+  // const getDentistInfo = (dentist) => {
+  //   // fetch(`/dentists/${dentist.id}`)
+  //   //   .then((r) => r.json())
+  //   //   .then((data) => {
+  //   //     setCurrentDentist(data)
+  //   //     navigate('/dentist')
+  //   //   })
+  //   setCurrentDentist(dentist)
+  //   navigate(`/dentist/${dentist.id}`)
+  // };
 
   const editApptMode = () => {
+    if(!isEdit)
     setIsEdit(true)
 }
 
@@ -74,14 +81,14 @@ console.log(isEdit)
         <Route
           exact
           path="/"
-          element={<Home dentists={dentists} getDentistInfo={getDentistInfo} />}
+          element={<Home dentists={dentists} />}
         />
         <Route
-          path="/dentist"
-          element={<Dentist currentDentist={currentDentist} user={user}/>}
+          path='/dentists/:id'
+          element={<Dentist user={user} isEdit={isEdit} setIsEdit={setIsEdit}/>}
         />
         <Route path="/appointments" element={<Appointments appointments={user.appointments} editApptMode={editApptMode}/>} />
-        {/* <Route path="/new-appointment" element={<NewAppointmentForm appointments={appointments} user={user} dentists={dentists} />} /> */}
+        <Route path="edit-appointment/:id" element={<EditAppointment />} />
       </Routes>
     </>
   );
