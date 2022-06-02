@@ -32,11 +32,6 @@ const DentistItem = ({ dentist, getDentistInfo }) => {
     </CardActions>
   </Card>
   </div>
-    // <>
-    //   <p>{dentist.name}</p>
-    //   <p>{dentist.speciality}</p>
-    //   <button onClick={handleClick}>View Info</button>
-    // </>
   );
 };
 

@@ -19,13 +19,9 @@ const App = () => {
 
   const [currentDentist, setCurrentDentist] = useState(null)
 
+  const [isEdit, setIsEdit] = useState(false)
+
   let navigate = useNavigate();
-
-  const [appointments, setAppointments] = useState([]);
-
-  // const fetchUser = () => {
-  //   console.log('plop')
-  // }
 
 
   useEffect(() => {
@@ -53,6 +49,11 @@ const App = () => {
       })
   };
 
+  const editApptMode = () => {
+    setIsEdit(true)
+}
+
+console.log(isEdit)
 
   if (!user) {
     return (
@@ -79,7 +80,7 @@ const App = () => {
           path="/dentist"
           element={<Dentist currentDentist={currentDentist} user={user}/>}
         />
-        <Route path="/appointments" element={<Appointments appointments={user.appointments}/>} />
+        <Route path="/appointments" element={<Appointments appointments={user.appointments} editApptMode={editApptMode}/>} />
         {/* <Route path="/new-appointment" element={<NewAppointmentForm appointments={appointments} user={user} dentists={dentists} />} /> */}
       </Routes>
     </>
