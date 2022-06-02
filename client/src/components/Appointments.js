@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import AppointmentItem from "./AppointmentItem";
 
-const Appointments = ({ user }) => {
+const Appointments = ({ user, editApptMode }) => {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Appointments = ({ user }) => {
   }
 
   const appointmentList = appointments.map((appointment) => (
-    <AppointmentItem key={appointment.id} appointment={appointment} setAppointments={setAppointments} cancelAppt={cancelAppt} />
+    <AppointmentItem key={appointment.id} appointment={appointment} setAppointments={setAppointments} cancelAppt={cancelAppt} editApptMode={editApptMode} />
   ));
 
   return (

@@ -3,17 +3,14 @@ import DateTimePicker from "react-datetime-picker";
 
 const NewAppointmentForm = ({ currentDentist, user }) => {
   const [value, onChange] = useState(new Date());
-
-  const [formData, setFormData] = useState({
-    dentist_id: currentDentist.id,
-    user_id: user.id,
-  });
+//   const [apptBooked, setApptBooked] = useState(false)
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(value);
-    console.log(user.id);
-    console.log(currentDentist.id);
+    // console.log(value);
+    // console.log(user.id);
+    // console.log(currentDentist.id);
 
     const newAppointment = {
       user_id: user.id,
@@ -29,6 +26,7 @@ const NewAppointmentForm = ({ currentDentist, user }) => {
       if (res.ok) {
         res.json().then((user) => {
           console.log("success");
+        //   setApptBooked(true)
         });
       } else {
         res.json().then((json) => console.log("wrong"));
@@ -37,10 +35,13 @@ const NewAppointmentForm = ({ currentDentist, user }) => {
   };
 
   return (
+    <>
     <div>
       <DateTimePicker onChange={onChange} value={value} />
       <button onClick={handleSubmit}>Book</button>
     </div>
+    {/* <h3>{apptBooked ? <p>Success! Your appointment has been booked!</p> : null}</h3> */}
+    </>
   );
 };
 
