@@ -2,13 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Navigation = ({ setIsAuthenticated, setUser, user }) => {
   let navigate = useNavigate();
-    const logout = () => {
+  const logout = () => {
     fetch("/logout", {
       method: "DELETE",
     }).then(() => {
       setUser(null);
     });
-    navigate('/')
+    navigate("/");
   };
 
   return (
@@ -20,12 +20,13 @@ const Navigation = ({ setIsAuthenticated, setUser, user }) => {
       <div className="u-cf"></div>
       <h4>Welcome, {user.name}!</h4>
       <nav>
-        <Link exact to="/">Home</Link>
+        <Link exact to="/">
+          Home
+        </Link>
         <Link to="/appointments">Appointments</Link>
-        {/* <Link to="/dentists">Dentists</Link> */}
       </nav>
     </div>
   );
-}
+};
 
 export default Navigation;
