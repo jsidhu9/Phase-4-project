@@ -9,11 +9,11 @@ import Dentist from "./components/Dentist";
 import Appointments from "./components/Appointments";
 import Auth from "./components/Auth"
 import EditAppointment from './components/EditAppointment'
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const App = () => {
   const [dentists, setDentists] = useState([]);
-
+  
   const [user, setUser] = useState(null);
 
   let navigate = useNavigate();
@@ -42,7 +42,6 @@ const App = () => {
       <h1 className="mainhead">FLATIRON DENTAL</h1>
       <Auth setUser={setUser} />
       <Login
-        error={"please login"}
         setUser={setUser}
       />
       </>

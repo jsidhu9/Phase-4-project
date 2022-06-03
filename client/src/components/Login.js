@@ -27,7 +27,7 @@ const Login = ({ setUser }) => {
           setUser(user);
         });
       } else {
-        res.json().then((json) => setError(json.error));
+        res.json().then((json) => setError(json.errors));
       }
     });
   }
@@ -44,7 +44,6 @@ const Login = ({ setUser }) => {
               <input
                 type="text"
                 placeholder="Enter username here..."
-                id="exampleEmailInput"
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
@@ -52,13 +51,13 @@ const Login = ({ setUser }) => {
               <label>Password </label>
               <input
                 type="password"
-                id="exampleEmailInput"
                 placeholder="Enter password here..."
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <Button type="submit" value="Log in">Login</Button>
           </form>
+          <h3>{error}</h3>
         </CardActions>
       </Card>
     </div>
