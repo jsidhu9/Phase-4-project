@@ -46,7 +46,6 @@ const Auth = ({ setUser, setIsAuthenticated }) => {
                 <input
                   type="text"
                   placeholder="Enter new username..."
-                  id="exampleEmailInput"
                   onChange={(e) => setUsername(e.target.value)}
                 />
             </div>
@@ -55,7 +54,6 @@ const Auth = ({ setUser, setIsAuthenticated }) => {
                 <input
                   type="password"
                   placeholder="Enter new password..."
-                  id="exampleEmailInput"
                   onChange={(e) => setPassword(e.target.value)}
                 />
             </div>

@@ -46,7 +46,7 @@ const EditAppointment = () => {
           <div className="header-container" >
             <h2>Edit your appointment</h2>
           </div>
-          <NewAppointmentForm action={editAppointment}/>
+          <NewAppointmentForm action={editAppointment} defaultValue={new Date()}/>
         </CardContent>
       </Card>
     </>
