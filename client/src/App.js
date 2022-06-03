@@ -42,7 +42,6 @@ const App = () => {
       <h1 className="mainhead">FLATIRON DENTAL</h1>
       <Auth setUser={setUser} />
       <Login
-        error={"please login"}
         setUser={setUser}
       />
       </>
