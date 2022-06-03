@@ -1,11 +1,6 @@
 
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-
-const AppointmentItem = ({ appointment }) => {
 import { useNavigate } from "react-router-dom";
 
 const AppointmentItem = ({ appointment, cancelAppt, editApptMode }) => {
@@ -14,7 +9,6 @@ const AppointmentItem = ({ appointment, cancelAppt, editApptMode }) => {
   const formattedDate = new Date(appointment_date_time).toLocaleString();
 
   let navigate = useNavigate();
-
 
   const handleDelete = (e) => {
     fetch(`appointments/${appointment.id}`, {
@@ -29,13 +23,13 @@ const AppointmentItem = ({ appointment, cancelAppt, editApptMode }) => {
 
   return (
     <div className="dentist_container">
-    <Card sx={{ maxWidth: 400, border: 1 }} className='visit_container' >
-      <h3 className='visit_container'>Dentist: {dentist.name}</h3>
-      <h3>Reason: {dentist.specialty}</h3>
-      <h3>Date and Time: {formattedDate}</h3>
-      <Button small onClick={handleDelete} >Cancel Appointment</Button>
-      <Button small onClick={handleEdit} >Change Appointment</Button>
-    </Card>  
+      <Card sx={{ maxWidth: 400, border: 1 }} className='visit_container' >
+        <h3 className='visit_container'>Dentist: {dentist.name}</h3>
+        <h3>Reason: {dentist.specialty}</h3>
+        <h3>Date and Time: {formattedDate}</h3>
+        <Button small onClick={handleDelete} >Cancel Appointment</Button>
+        <Button small onClick={handleEdit} >Change Appointment</Button>
+      </Card>  
     </div>
   );
 };

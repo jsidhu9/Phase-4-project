@@ -1,6 +1,8 @@
 import NewAppointmentForm from "./NewAppointmentForm";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
 const EditAppointment = () => {
   const [currentAppointment, setcurrentAppointment] = useState(null);
@@ -39,8 +41,14 @@ const EditAppointment = () => {
 
   return (
     <>
-      <h2>Edit your appointment!</h2>
-      <NewAppointmentForm action={editAppointment}/>
+      <Card sx={{minHeight: 500, border: '1px solid',  borderColor: 'primary.main', borderRadius: '16px'}}>
+        <CardContent>
+          <div className="header-container" >
+            <h2>Edit your appointment</h2>
+          </div>
+          <NewAppointmentForm action={editAppointment}/>
+        </CardContent>
+      </Card>
     </>
   );
 };

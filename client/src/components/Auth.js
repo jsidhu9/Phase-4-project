@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
 
 const Auth = ({ setUser, setIsAuthenticated }) => {
   const [username, setUsername] = useState("");
@@ -31,33 +35,39 @@ const Auth = ({ setUser, setIsAuthenticated }) => {
   }
   return (
     <div>
-      <h1>First time? Welcome!</h1>
-      <h3>Create account below!</h3>
-      <form onSubmit={onSubmit}>
-        <div>
-          <label>Username</label>
-          <input
-            type="text"
-            placeholder="Enter new username..."
-            id="exampleEmailInput"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Enter new password..."
-            id="exampleEmailInput"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <input
-          className="button-primary"
-          type="submit"
-          value={isLoading ? "Loading..." : "Sign Up"}
-        />
-      </form>
+      <Card className='login_card'>
+        <CardContent>
+          <h2>Create account</h2>
+        </CardContent>
+        <CardActions>
+          <form onSubmit={onSubmit}>
+            <div>
+              <label>Username</label>
+                <input
+                  type="text"
+                  placeholder="Enter new username..."
+                  id="exampleEmailInput"
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+            </div>
+            <div>
+              <label>Password </label>
+                <input
+                  type="password"
+                  placeholder="Enter new password..."
+                  id="exampleEmailInput"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+            </div>
+            <Button
+              className="button-primary"
+              type="submit"
+              value={isLoading ? "Loading..." : "Sign Up"}
+              >Sign Up
+            </Button>
+          </form>
+        </CardActions>
+      </Card>
     </div>
   );
 };

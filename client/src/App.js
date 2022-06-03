@@ -38,11 +38,13 @@ const App = () => {
   if (!user) {
     return (
       <>
+      
+      <h1 className="mainhead">FLATIRON DENTAL</h1>
+      <Auth setUser={setUser} />
       <Login
         error={"please login"}
         setUser={setUser}
       />
-      <Auth setUser={setUser} />
       </>
     );
   }
