@@ -26,13 +26,13 @@ const Appointments = ({ user, editApptMode }) => {
 
   return (
     <Card sx={{minHeight: 500, border: '1px solid',  borderColor: 'primary.main', borderRadius: '16px'}}>
-    <CardContent>
-    <div className="header-container" >
-      <h2>My Appointments</h2>
-      </div>
-      <div id="make-appointment">
-      {appointmentList}
-      </div>
+      <CardContent>
+        <div className="header-container" >
+          <h2>My Appointments</h2>
+        </div>
+        <div id="make-appointment">
+          {appointmentList}
+        </div>
       </CardContent>
     </Card>
   );
