@@ -9,7 +9,7 @@ puts "🌱 Seeding spices..."
 
 puts "Deleting old data..."
 
-Appointment.destroy_all
+Appointment.destroy_allils
 
 
 u1 = User.create(name: 'Jaz', password: "password")
